@@ -23,6 +23,7 @@ class UserRegistrationForm(UserCreationForm):
         fields = ["email", "username", "password1", "password2"]
 
     # functions for form validation
+    # email user validation
     def clean_email(self):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
@@ -30,6 +31,7 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError(u'Email address must be unique')
         return email
 
+    # password validation
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
